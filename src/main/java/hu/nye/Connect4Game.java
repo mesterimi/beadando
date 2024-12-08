@@ -32,30 +32,30 @@ public class Connect4Game {
 
             if (currentPlayer.equals(player1)) {
                 String input = scanner.nextLine();
-                if (input.equals("0")) {
-                    try {
-                        saveGameBoard(filePath);
-                        System.out.println("Game saved successfully.");
-                    } catch (IOException e) {
-                        System.out.println("Failed to save the game.");
+                switch (input) {
+                    case "0" -> {
+                        try {
+                            saveGameBoard(filePath);
+                            System.out.println("Game saved successfully.");
+                        } catch (IOException e) {
+                            System.out.println("Failed to save the game.");
+                        }
+                        continue;
                     }
-                    continue;
-                }
-
-                if (input.equals("q")) {
-                    System.out.println("Goodbye!");
-                    System.exit(0);
-                }
-
-                if (input.equals("h")) {
-                    try {
-                        System.out.println("Showing highscores:");
-                        showHighScores();
+                    case "q" -> {
+                        System.out.println("Goodbye!");
                         System.exit(0);
-                    } catch (IOException e) {
-                        System.out.println("Error loading highscores.");
                     }
-                    continue;
+                    case "h" -> {
+                        try {
+                            System.out.println("Showing highscores:");
+                            showHighScores();
+                            System.exit(0);
+                        } catch (IOException e) {
+                            System.out.println("Error loading highscores.");
+                        }
+                        continue;
+                    }
                 }
 
                 int col = input.charAt(0) - 'a';
