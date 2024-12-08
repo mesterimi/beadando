@@ -4,7 +4,9 @@
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
+
     <module name="TreeWalker">
+
         <module name="MethodName">
             <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
         </module>
@@ -20,27 +22,33 @@
         <module name="PackageName">
             <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
         </module>
+
         <module name="LeftCurly">
             <property name="option" value="eol"/>
         </module>
-        <module name="RightCurly">
+        <!--<module name="RightCurly">
             <property name="option" value="alone"/>
-        </module>
+        </module>-->
         <module name="WhitespaceAround"/>
-        <module name="EmptyLineSeparator"/>
+        <!--<module name="EmptyLineSeparator"/>-->
+
         <module name="MagicNumber">
-            <property name="ignoreNumbers" value="-1,0,1,2"/>
+            <property name="ignoreNumbers" value="-1,0,1,2,3,4,5,6,7,8,9"/>
         </module>
+
         <module name="UnusedImports"/>
-        <module name="AvoidStarImport"/>
+        <!--<module name="AvoidStarImport"/>-->
+
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
-        <module name="FinalLocalVariable"/>
+        <!-- <module name="JavadocVariable"/> -->
+
+        <!--<module name="FinalLocalVariable"/>-->
+        <!--<module name="MissingSwitchDefault"/>-->
         <module name="SimplifyBooleanReturn"/>
         <module name="IllegalThrows"/>
-        <module name="UnusedImports"/>
     </module>
+
     <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
     </module>

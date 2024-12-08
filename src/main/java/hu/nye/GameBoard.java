@@ -3,8 +3,18 @@ package hu.nye;
 import java.util.Arrays;
 
 public class GameBoard {
-    static final int ROWS = 6;
-    static final int COLS = 7;
+    static final int ROWS;
+
+    static {
+        ROWS = 6;
+    }
+
+    public static final int COLS;
+
+    static {
+        COLS = 7;
+    }
+
     private final char[][] board;
 
     public GameBoard() {
@@ -37,7 +47,7 @@ public class GameBoard {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GameBoard gameBoard = (GameBoard) o;
+        final GameBoard gameBoard = (GameBoard) o;
         return Arrays.deepEquals(board, gameBoard.board);
     }
 
@@ -47,8 +57,8 @@ public class GameBoard {
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("GameBoard {\n");
+    public  String toString() {
+        final StringBuilder sb = new  StringBuilder("GameBoard {\n");
         for (char[] row : board) {
             sb.append(Arrays.toString(row)).append("\n");
         }

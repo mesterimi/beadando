@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Player {
     private final String name;
+
     private final char token;
 
     public Player(String name, char token) {
@@ -23,7 +24,7 @@ public class Player {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
+        final Player player = (Player) o;
         return token == player.token && Objects.equals(name, player.name);
     }
 
