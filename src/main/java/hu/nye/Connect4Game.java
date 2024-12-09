@@ -1,6 +1,11 @@
 package hu.nye;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -9,8 +14,11 @@ import java.util.Scanner;
 
 public class Connect4Game {
     private final Player player1;
+
     private final Player player2;
+
     private Player currentPlayer;
+
     private final GameBoard gameBoard;
 
     private static final String HIGH_SCORE_FILE = "highscores.txt";
@@ -28,7 +36,8 @@ public class Connect4Game {
 
         while (true) {
             displayBoard();
-            System.out.println("Press 0 to save the game, h to view high scores, q to quit, or choose a column (a,b,c,d,e,f,g): ");
+            System.out.println("Press 0 to save the game, h to view high scores, q to quit, "
+                    + "or choose a column (a,b,c,d,e,f,g): ");
 
             if (currentPlayer.equals(player1)) {
                 String input = scanner.nextLine();
@@ -37,7 +46,8 @@ public class Connect4Game {
                         try {
                             saveGameBoard(filePath);
                             System.out.println("Game saved successfully.");
-                        } catch (IOException e) {
+                        }
+                        catch (IOException e) {
                             System.out.println("Failed to save the game.");
                         }
                         continue;
@@ -51,7 +61,8 @@ public class Connect4Game {
                             System.out.println("Showing highscores:");
                             showHighScores();
                             System.exit(0);
-                        } catch (IOException e) {
+                        }
+                        catch (IOException e) {
                             System.out.println("Error loading highscores.");
                         }
                         continue;
@@ -63,12 +74,14 @@ public class Connect4Game {
                     System.out.println("Invalid move. Try again.");
                     continue;
                 }
-            } else {
+            }
+            else {
 
                 int col = generateComputerMove();
                 if (gameBoard.playMove(col, currentPlayer.getToken())) {
                     System.out.println("Computer plays in column: " + (char) ('a' + col));
-                } else {
+                }
+                else {
                     System.out.println("Computer tried an invalid move. Re-trying...");
                     continue;
                 }
@@ -83,7 +96,8 @@ public class Connect4Game {
                 try {
                     clearGameBoardFile(filePath);
                     System.out.println("Game board file cleared.");
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     System.out.println("Failed to clear the game board file.");
                 }
                 break;
@@ -108,7 +122,8 @@ public class Connect4Game {
                 writer.newLine();
             }
             writer.flush();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Error clearing game board file: " + e.getMessage());
             throw e;
         }
@@ -234,7 +249,8 @@ public class Connect4Game {
                     scores.put(name, count);
                 }
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Could not load high scores: " + e.getMessage());
         }
         return scores;
@@ -246,7 +262,8 @@ public class Connect4Game {
                 writer.write(entry.getKey() + ": " + entry.getValue());
                 writer.newLine();
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Could not save high scores: " + e.getMessage());
         }
     }
@@ -264,7 +281,8 @@ public class Connect4Game {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Error reading high scores: " + e.getMessage());
             throw e;
         }

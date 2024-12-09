@@ -1,2 +1,1 @@
-aha: 2
-valaki: 2
+aha: 4
